@@ -1,3 +1,5 @@
+package Course;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -128,10 +130,10 @@ public class Scheduler {
             System.out.println("ID: " + course.getId());
             System.out.println("Name: " + course.getName());
             System.out.println("Code: " + course.getCourseCode());
-            System.out.print("Scope: " + "\n");
+            System.out.print("Course.Scope: " + "\n");
             for(int i=0; i<course.getScope().size(); i++){
-                System.out.println("\t Scope " + (i+1) +": ");
-                System.out.println("\t\t + Scope: " + course.getScope().get(i).getScope());
+                System.out.println("\t Course.Scope " + (i+1) +": ");
+                System.out.println("\t\t + Course.Scope: " + course.getScope().get(i).getScope());
                 System.out.println("\t\t + Time: " + course.getScope().get(i).getTime());
                 System.out.println("\t\t + Weekday: " + course.getScope().get(i).getWeekday());
                 System.out.println("\t\t + Location: " + course.getScope().get(i).getLocation());
@@ -140,8 +142,8 @@ public class Scheduler {
         }
         System.out.println("\n \n");
         //Write data to file (text file and json file) for future using
-        WriteToFile.writeToFile("src/main/resources/CourseRegister.txt", courses);
+        WriteToFile.writeToFile("src/main/resources/Course/CourseRegister.txt", courses);
         String JsonData = ParseToJson.parse(courses);
-        WriteToFile.writeToAJsonFile("src/main/resources/JsonCourseRegister", JsonData);
+        WriteToFile.writeToAJsonFile("src/main/resources/Course/JsonCourseRegister", JsonData);
     }
 }
