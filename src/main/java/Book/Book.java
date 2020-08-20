@@ -1,7 +1,7 @@
 package Book;
 
 public class Book {
-    private String ID;
+    private int ID;
     private String name;
     private String shelf;
     private String initAmount;
@@ -10,11 +10,11 @@ public class Book {
     private String publisher;
     private String category;
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -77,7 +77,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String ID, String name, String shelf, String initAmount, String currentAmount, String author, String publisher, String category) {
+    public Book(int ID, String name, String shelf, String initAmount, String currentAmount, String author, String publisher, String category) {
         this.ID = ID;
         this.name = name;
         this.shelf = shelf;

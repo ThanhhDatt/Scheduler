@@ -1,5 +1,6 @@
 package Book;
 
+import Book.ParseToJson;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -118,23 +119,23 @@ public class BookInfoCrawler {
                     System.out.println(attributes[j] + ": " + "No data");
                     tmp[j]="No data";
                 }
-                tmp[0]= String.valueOf((values.size()-index+1));
-                for(int i=0; i<7; i++){
-                    Book book = new Book();
-                    book.setID(tmp[i]);
-                    book.setName(tmp[i]);
-                    book.setShelf(tmp[i]);
-                    book.setInitAmount(tmp[i]);
-                    book.setCurrentAmount(tmp[i]);
-                    book.setAuthor(tmp[i]);
-                    book.setCategory(tmp[i]);
-                    books.add(book);
-                }
+                Book book = new Book();
+                book.setID((values.size()-index+1));
+                book.setName(tmp[0]);
+                book.setShelf(tmp[1]);
+                book.setInitAmount(tmp[2]);
+                book.setCurrentAmount(tmp[3]);
+                book.setAuthor(tmp[4]);
+                book.setPublisher(tmp[5]);
+                book.setCategory(tmp[6]);
+                books.add(book);
                 System.out.println("\n");
                 index--;
             }
         }
         System.out.print(books);
-//        writeToAJsonFile("")
+        WriteToFile.writeToFile("src/main/resources/Book/BookInfo.txt", books);
+        String JsonData = ParseToJson.parse(books);
+        WriteToFile.writeToAJsonFile("src/main/resources/Book/JsonBookInfo", JsonData);
     }
 }

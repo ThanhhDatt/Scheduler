@@ -1,2 +1,102 @@
-All news in time: 2020/08/19 18:11:59
+All courses updated at time: 2020/08/21 00:39:29
  
+ID: 1
+Name: Xác suất thống kê (base)
+Code: MAT1101 20
+Course Scope: 
+	 Scope 1: 
+		 + Scope: CL
+		 + Time: Tiết 1-3 
+		 + Weekday: Thứ 2
+		 + Location: 206-GĐ3
+
+ID: 2
+Name: Lý thuyết thông tin (base)
+Code: INT2044 20
+Course Scope: 
+	 Scope 1: 
+		 + Scope: CL
+		 + Time: Tiết 4-6 
+		 + Weekday: Thứ 4
+		 + Location: 209-GĐ3
+
+ID: 3
+Name: Đồ họa máy tính
+Code: INT3403 20
+Course Scope: 
+	 Scope 1: 
+		 + Scope: N1
+		 + Time: Tiết 4-6 
+		 + Weekday: Thứ 6
+		 + Location: PM313-G2
+	 Scope 2: 
+		 + Scope: N1
+		 + Time: Tiết 4-6 
+		 + Weekday: Thứ 6
+		 + Location: PM313-G2
+
+ID: 4
+Name: Phát triển ứng dụng Web
+Code: INT3306 21
+Course Scope: 
+	 Scope 1: 
+		 + Scope: N1
+		 + Time: Tiết 9-10
+		 + Weekday: Thứ 3
+		 + Location: PM313-G2
+	 Scope 2: 
+		 + Scope: N1
+		 + Time: Tiết 9-10
+		 + Weekday: Thứ 3
+		 + Location: PM313-G2
+
+ID: 5
+Name: Phân tích và thiết kế OOP
+Code: INT3110 20
+Course Scope: 
+	 Scope 1: 
+		 + Scope: CL
+		 + Time: Tiết 10-12
+		 + Weekday: Thứ 6
+		 + Location: 206-GĐ3
+
+ID: 6
+Name: Kiểm thử và đảm bảo chất lượng phần mềm
+Code: INT3117 20
+Course Scope: 
+	 Scope 1: 
+		 + Scope: CL
+		 + Time: Tiết 4-6 
+		 + Weekday: Thứ 2
+		 + Location: 206-GĐ3
+
+ID: 7
+Name: Quản lý dự án phần mềm
+Code: INT3111 20
+Course Scope: 
+	 Scope 1: 
+		 + Scope: CL
+		 + Time: Tiết 1-3 
+		 + Weekday: Thứ 3
+		 + Location: 205-GĐ3
+
+ID: 8
+Name: Trí tuệ nhân tạo
+Code: Đang xin mở lớp
+Course Scope: 
+	 Scope 1: 
+		 + Scope: Đang xin mở lớp
+		 + Time: Đang xin mở lớp
+		 + Weekday: Đang xin mở lớp
+		 + Location: Đang xin mở lớp
+
+ID: 9
+Name: Thể Chất
+Code: Đang xin mở lớp
+Course Scope: 
+	 Scope 1: 
+		 + Scope: Đang xin mở lớp
+		 + Time: Đang xin mở lớp
+		 + Weekday: Đang xin mở lớp
+		 + Location: Đang xin mở lớp
+

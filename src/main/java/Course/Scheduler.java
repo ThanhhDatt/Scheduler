@@ -19,10 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Scheduler {
     /**
@@ -81,7 +78,7 @@ public class Scheduler {
         SPREADSHEET_ID = getSheetsID(path);
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String range = "!A2:G12";
+        final String range = "!A2:Z100";
         Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
@@ -89,7 +86,8 @@ public class Scheduler {
                 .get(SPREADSHEET_ID, range)
                 .execute();
         List<List<Object>> values = response.getValues();
-        ArrayList<Course> courses = new ArrayList<>();
+        Stack<Course> courses = new Stack<Course>();
+        ListIterator it = values.listIterator();
         int index = 0;
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
@@ -101,18 +99,30 @@ public class Scheduler {
                 course.setId(index);
                 course.setName((String) row.get(1));
                 course.setCourseCode((String) row.get(2));
-                if(((String) row.get(2)).equalsIgnoreCase(ROW_STATUS)){
+                if(((String) row.get(2)).equalsIgnoreCase(ROW_STATUS))
+                {
                     scope.setScope((String) row.get(2));
                     scope.setTime((String) row.get(2));
                     scope.setWeekday((String) row.get(2));
                     scope.setLocation((String) row.get(2));
-                    scopes.add(scope);
                 } else {
                     scope.setScope((String) row.get(3));
                     scope.setTime((String) row.get(4));
                     scope.setWeekday((String) row.get(5));
                     scope.setLocation((String) row.get(6));
-                    scopes.add(scope);
+                }
+                scopes.add(scope);
+                if(values.get(index).get(1)==""){
+                    course.setId(index-1);
+                    course.setName((String) values.get(index-1).get(1));
+                    course.setCourseCode((String) values.get(index-1).get(2));
+                    Scope scope1 = new Scope();
+                    scope1.setScope((String) row.get(3));
+                    scope1.setTime((String) row.get(4));
+                    scope1.setWeekday((String) row.get(5));
+                    scope1.setLocation((String) row.get(6));
+                    scopes.add(scope1);
+                    courses.pop();
                 }
                 course.setScope(scopes);
                 courses.add(course);
@@ -130,10 +140,10 @@ public class Scheduler {
             System.out.println("ID: " + course.getId());
             System.out.println("Name: " + course.getName());
             System.out.println("Code: " + course.getCourseCode());
-            System.out.print("Course.Scope: " + "\n");
+            System.out.print("Course Scope: " + "\n");
             for(int i=0; i<course.getScope().size(); i++){
-                System.out.println("\t Course.Scope " + (i+1) +": ");
-                System.out.println("\t\t + Course.Scope: " + course.getScope().get(i).getScope());
+                System.out.println("\t Scope " + (i+1) +": ");
+                System.out.println("\t\t + Scope: " + course.getScope().get(i).getScope());
                 System.out.println("\t\t + Time: " + course.getScope().get(i).getTime());
                 System.out.println("\t\t + Weekday: " + course.getScope().get(i).getWeekday());
                 System.out.println("\t\t + Location: " + course.getScope().get(i).getLocation());
@@ -141,9 +151,10 @@ public class Scheduler {
             System.out.println();
         }
         System.out.println("\n \n");
+        List<Course> courses1 = courses;
         //Write data to file (text file and json file) for future using
-        WriteToFile.writeToFile("src/main/resources/Course/CourseRegister.txt", courses);
-        String JsonData = ParseToJson.parse(courses);
+        WriteToFile.writeToFile("src/main/resources/Course/CourseRegister.txt", courses1);
+        String JsonData = ParseToJson.parse(courses1);
         WriteToFile.writeToAJsonFile("src/main/resources/Course/JsonCourseRegister", JsonData);
     }
 }

@@ -1,1 +1,131 @@
-[]
+[
+  {
+    "id": 0,
+    "name": "Xác suất thống kê (base)",
+    "courseCode": "MAT1101 20",
+    "scope": [
+      {
+        "scope": "CL",
+        "time": "Tiết 1-3 ",
+        "weekday": "Thứ 2",
+        "location": "206-GĐ3"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Lý thuyết thông tin (base)",
+    "courseCode": "INT2044 20",
+    "scope": [
+      {
+        "scope": "CL",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 4",
+        "location": "209-GĐ3"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Đồ họa máy tính",
+    "courseCode": "INT3403 20",
+    "scope": [
+      {
+        "scope": "N1",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 6",
+        "location": "PM313-G2"
+      },
+      {
+        "scope": "N1",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 6",
+        "location": "PM313-G2"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Phát triển ứng dụng Web",
+    "courseCode": "INT3306 21",
+    "scope": [
+      {
+        "scope": "N1",
+        "time": "Tiết 9-10",
+        "weekday": "Thứ 3",
+        "location": "PM313-G2"
+      },
+      {
+        "scope": "N1",
+        "time": "Tiết 9-10",
+        "weekday": "Thứ 3",
+        "location": "PM313-G2"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Phân tích và thiết kế OOP",
+    "courseCode": "INT3110 20",
+    "scope": [
+      {
+        "scope": "CL",
+        "time": "Tiết 10-12",
+        "weekday": "Thứ 6",
+        "location": "206-GĐ3"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Kiểm thử và đảm bảo chất lượng phần mềm",
+    "courseCode": "INT3117 20",
+    "scope": [
+      {
+        "scope": "CL",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 2",
+        "location": "206-GĐ3"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Quản lý dự án phần mềm",
+    "courseCode": "INT3111 20",
+    "scope": [
+      {
+        "scope": "CL",
+        "time": "Tiết 1-3 ",
+        "weekday": "Thứ 3",
+        "location": "205-GĐ3"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Trí tuệ nhân tạo",
+    "courseCode": "Đang xin mở lớp",
+    "scope": [
+      {
+        "scope": "Đang xin mở lớp",
+        "time": "Đang xin mở lớp",
+        "weekday": "Đang xin mở lớp",
+        "location": "Đang xin mở lớp"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Thể Chất",
+    "courseCode": "Đang xin mở lớp",
+    "scope": [
+      {
+        "scope": "Đang xin mở lớp",
+        "time": "Đang xin mở lớp",
+        "weekday": "Đang xin mở lớp",
+        "location": "Đang xin mở lớp"
+      }
+    ]
+  }
+]
