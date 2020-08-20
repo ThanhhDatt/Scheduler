@@ -1,8 +1,12 @@
+package GetData;
+
+import java.util.ArrayList;
+
 public class Course {
     private Integer id;
     private String name;
     private String courseCode;
-    private Scope scope;
+    private ArrayList<Scope> scope;
 
     public Integer getId() {
         return id;
@@ -28,15 +32,15 @@ public class Course {
         this.courseCode = courseCode;
     }
 
-    public Scope getScope() {
+    public ArrayList<Scope> getScope() {
         return scope;
     }
 
-    public void setScope(Scope scope) {
+    public void setScope(ArrayList<Scope> scope) {
         this.scope = scope;
     }
 
-    public Course(Integer id, String name, String courseCode, Scope scope) {
+    public Course(Integer id, String name, String courseCode, ArrayList<Scope> scope) {
         this.id = id;
         this.name = name;
         this.courseCode = courseCode;

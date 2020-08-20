@@ -1,3 +1,5 @@
+package GetData;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -23,10 +25,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Scheduler {
+    /**
+    * Initialize global instances and status
+    */
     private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
     private static String SPREADSHEET_ID = "";
+    private static final String ROW_STATUS = "Đang xin mở lớp";
 
     /**
      * Global instance of the scopes required by this quickstart.
@@ -84,51 +90,58 @@ public class Scheduler {
                 .execute();
         List<List<Object>> values = response.getValues();
         ArrayList<Course> courses = new ArrayList<>();
-        int index = values.size();
-        if (values == null || values.isEmpty()) {
-            System.out.println("No data found.");
-        } else {
-            for (List row : values) {
-                for(int i=0; i<row.size(); i++){
-                    switch (i){
-                        case 0:
-                            System.out.print("ID: ");
-                            break;
-                        case 1:
-                            System.out.print("Name: ");
-                            break;
-                        case 2:
-                            System.out.print("Code: ");
-                            break;
-                        case 3:
-                            System.out.print("Scope: ");
-                            break;
-                        case 4:
-                            System.out.print("Time: ");
-                            break;
-                        case 5:
-                            System.out.print("Weekday: ");
-                            break;
-                        case 6:
-                            System.out.print("Location: ");
-                            break;
-                    }
-                    System.out.println(row.get(i));
-                }
-                System.out.println("\n");
-            }
-        }
+        int index = 0;
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
         } else {
             for (List row : values) {
                 Course course = new Course();
+                ArrayList<Scope> scopes = new ArrayList<>();
                 Scope scope = new Scope();
-//                scope.setScope(row.get());
+                course.setId(index);
+                course.setName((String) row.get(1));
+                course.setCourseCode((String) row.get(2));
+                if(((String) row.get(2)).equalsIgnoreCase(ROW_STATUS)){
+                    scope.setScope((String) row.get(2));
+                    scope.setTime((String) row.get(2));
+                    scope.setWeekday((String) row.get(2));
+                    scope.setLocation((String) row.get(2));
+                    scopes.add(scope);
+                } else {
+                    scope.setScope((String) row.get(3));
+                    scope.setTime((String) row.get(4));
+                    scope.setWeekday((String) row.get(5));
+                    scope.setLocation((String) row.get(6));
+                    scopes.add(scope);
+                }
+                course.setScope(scopes);
+                courses.add(course);
+                index++;
             }
         }
+
+//        TODO:
+//          - Merge no course scope into previous course
+//          - Parse full course into Json file
+//          - Add course info into table
+//          - Create schedule base on course info
+
+        for(Course course : courses){
+            System.out.println("ID: " + course.getId());
+            System.out.println("Name: " + course.getName());
+            System.out.println("Code: " + course.getCourseCode());
+            System.out.print("GetData.Scope: " + "\n");
+            for(int i=0; i<course.getScope().size(); i++){
+                System.out.println("\t GetData.Scope " + (i+1) +": ");
+                System.out.println("\t\t + GetData.Scope: " + course.getScope().get(i).getScope());
+                System.out.println("\t\t + Time: " + course.getScope().get(i).getTime());
+                System.out.println("\t\t + Weekday: " + course.getScope().get(i).getWeekday());
+                System.out.println("\t\t + Location: " + course.getScope().get(i).getLocation());
+            }
+            System.out.println();
+        }
         System.out.println("\n \n");
-        for(Course course : courses) System.out.println(course.getName());
+        //Write data to file (text file and json file) for future using
         WriteToFile.writeToFile("src/main/resources/CourseRegister.txt", courses);
         String JsonData = ParseToJson.parse(courses);
         WriteToFile.writeToAJsonFile("src/main/resources/JsonCourseRegister", JsonData);

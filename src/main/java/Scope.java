@@ -1,3 +1,5 @@
+package GetData;
+
 public class Scope {
     private String scope;
     private String time;
@@ -45,4 +47,5 @@ public class Scope {
 
     public Scope() {
     }
+
 }

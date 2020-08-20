@@ -1,3 +1,6 @@
+package GetData;
+
+import GetData.Course;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
