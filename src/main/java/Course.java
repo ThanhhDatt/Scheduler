@@ -1,5 +1,3 @@
-package GetData;
-
 import java.util.ArrayList;
 
 public class Course {

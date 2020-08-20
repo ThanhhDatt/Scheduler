@@ -1,7 +1,3 @@
-package GetData;
-
-import GetData.Course;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -19,10 +15,10 @@ public class WriteToFile {
                 myWriter.write("ID: " + courses.get(i).getId() + "\n");
                 myWriter.write("Name: " + courses.get(i).getName() + "\n");
                 myWriter.write("Code: " + courses.get(i).getCourseCode() + "\n");
-                myWriter.write("GetData.Scope: " + "\n");
+                myWriter.write("Scope: " + "\n");
                 for(int j=0; j<courses.get(i).getScope().size(); j++){
-                    myWriter.write("\t GetData.Scope " + (j+1) +": \n");
-                    myWriter.write("\t + GetData.Scope: " + courses.get(i).getScope().get(j).getScope() + "\n");
+                    myWriter.write("\t Scope " + (j+1) +": \n");
+                    myWriter.write("\t + Scope: " + courses.get(i).getScope().get(j).getScope() + "\n");
                     myWriter.write("\t + Time: " + courses.get(i).getScope().get(j).getTime() + "\n");
                     myWriter.write("\t + Weekday: " + courses.get(i).getScope().get(j).getWeekday() + "\n");
                     myWriter.write("\t + Location: " + courses.get(i).getScope().get(j).getLocation() + "\n");

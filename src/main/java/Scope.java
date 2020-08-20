@@ -1,5 +1,3 @@
-package GetData;
-
 public class Scope {
     private String scope;
     private String time;
