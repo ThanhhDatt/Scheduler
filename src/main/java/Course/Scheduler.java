@@ -1,5 +1,10 @@
 package Course;
 
+import Course.Entity.Course;
+import Course.Entity.Scope;
+import Course.StoreData.ParseToJson;
+import Course.StoreData.WriteToFile;
+import Course.StoreData.WriteToJsonFile;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -68,7 +73,7 @@ public class Scheduler {
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
      */
-    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         // Load client secrets.
         InputStream in = Scheduler.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
@@ -186,123 +191,24 @@ public class Scheduler {
         courses = course1;
 
         /**
-         Write data to file (text file and json file) for future using
+         * Write data to file (text file and json file) for future using
+         * Divided into 2 thread for optimization
+         * @thread1 for writing to text file
+         * @thread2 for writing to json file
+         * @thread3 for writing course info into sheets
          **/
-        WriteToFile.writeToFile("src/main/resources/Course/CourseRegister.txt", courses);
+        //thread 1
+        Runnable r1 = new WriteToFile("src/main/resources/Course/CourseRegister.txt", courses);
+        new Thread(r1).start();
+
+        //thread 2
         String JsonData = ParseToJson.parse(courses);
-        WriteToFile.writeToAJsonFile("src/main/resources/Course/JsonCourseRegister", JsonData);
-        WriteToSheets();
-    }
+        Runnable r2 = new WriteToJsonFile("src/main/resources/Course/JsonCourseRegister", JsonData);
+        new Thread(r2).start();
 
-    /**
-     * Append values to defined range
-     * @throws IOException if cannot execute getCredential()
-     * @throws GeneralSecurityException if cannot initial GoogleNetHttpTransport.newTrustedTransport()
-     **/
-    public static void WriteToSheets() throws IOException {
-        try{
-            range = "!A31:Z500";
-            Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                    .setApplicationName(APPLICATION_NAME)
-                    .build();
-
-            ClearValues(range);
-
-            List<List<Object>> values = loadCourseInfo(courses);
-
-            ValueRange appendBody = new ValueRange().setValues(values);
-            AppendValuesResponse appendResult = service.spreadsheets().values()
-                    .append(SPREADSHEET_ID, range, appendBody)
-                    .setValueInputOption("USER_ENTERED")
-                    .setInsertDataOption("OVERWRITE")
-                    .setIncludeValuesInResponse(true)
-                    .execute();
-        } catch (Exception e){
-            System.out.println(e.toString());
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-    }
-
-    /**
-     * Clear cell values by defined range
-     * @throws IOException if cannot execute getCredential()
-     * @throws GeneralSecurityException if cannot initial GoogleNetHttpTransport.newTrustedTransport()
-     **/
-    public static void ClearValues(String range){
-        try{
-            Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                    .setApplicationName(APPLICATION_NAME)
-                    .build();
-            /**Write values to defined ranged*/
-            ClearValuesRequest clearValuesRequest = new ClearValuesRequest();
-            service.spreadsheets().values().clear(SPREADSHEET_ID, range, clearValuesRequest).execute();
-        } catch (Exception e){
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-    }
-
-    /**
-     * Load course info into dynamic 2 dimension array
-     * @return Array with course info and place into right cell with time constraint
-     **/
-    public static List<List<Object>> loadCourseInfo(List<Course> courses) throws IOException {
-        /**
-         * Init schedule form with no course data
-         **/
-        Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-        List<List<Object>> values = new ArrayList<>();
-        List<Object> rows = new ArrayList<>();
-        rows.add("Thời gian");
-        for(int i=2; i<=7; i++){
-            String weekday = "Thứ " + i;
-            rows.add(weekday);
-        }
-        values.add(rows);
-        for(int j=0; j<12; j++){
-            List<Object> tmpRows = new ArrayList<>();
-            String lessonTime = "Tiết " + (j+1) + " (" + (j+7) + "h - " + (j+8) + "h)";
-            tmpRows.add(lessonTime);
-            for(int k=0; k<6; k++){
-                tmpRows.add("");
-            }
-            values.add(tmpRows);
-        }
-
-        /**
-         * Load course data intodule form
-         **/
-        for(Course course : courses){
-            for(Scope scope : course.getScope()){
-                switch (scope.getWeekday()){
-                    case "Thu 2":
-
-                        break;
-                    case "Thu 3":
-
-                        break;
-                    case "Thu 4":
-
-                        break;
-                    case "Thu 5":
-
-                        break;
-                    case "Thu 6":
-
-                        break;
-                    case "Thu 7":
-
-                        break;
-                }
-            }
-        }
-
-        return values;
+        //thread 3
+        Runnable r3 = new WriteToSheets(courses, SPREADSHEET_ID);
+        new Thread(r3).start();
     }
 
 }

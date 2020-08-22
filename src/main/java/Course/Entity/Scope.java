@@ -1,4 +1,4 @@
-package Course;
+package Course.Entity;
 
 /**
  * Init Scope entity to get all info from course's scope

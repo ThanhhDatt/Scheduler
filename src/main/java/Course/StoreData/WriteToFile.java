@@ -1,18 +1,28 @@
-package Course;
+package Course.StoreData;
+
+import Course.Entity.Course;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
-public class WriteToFile {
+public class WriteToFile implements Runnable{
+    private String path;
+    private List<Course> courses;
+
+    public WriteToFile(String path, List<Course> courses) {
+        this.path = path;
+        this.courses = courses;
+    }
+
     /**
      * Write object array into text file for future used
      * @throws IOException if writer is wrong
      **/
-    public static void writeToFile(String path, List<Course> courses) throws IOException {
+    @Override
+    public void run() {
         try{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
@@ -34,25 +44,6 @@ public class WriteToFile {
             }
             myWriter.close();
             System.out.println("Successfully wrote to the text file!");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
-
-    /**
-     * Write object array into json file for future used
-     * @throws IOException if writer is wrong
-     **/
-    public static void writeToAJsonFile(String path, String context){
-        try{
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
-            FileWriter myWriter = new FileWriter(path);
-            myWriter.write(context);
-            myWriter.close();
-            System.out.println("Successfully wrote to the Json file!");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
