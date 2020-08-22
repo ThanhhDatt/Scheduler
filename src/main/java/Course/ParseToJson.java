@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParseToJson {
+    /**
+     * Parse an object array into Json String
+     * @return Object JsonString
+     **/
     static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     public static String parse(List<Course> courses){
         String content = gson.toJson(courses);

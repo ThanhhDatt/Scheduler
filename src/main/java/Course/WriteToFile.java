@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WriteToFile {
+    /**
+     * Write object array into text file for future used
+     * @throws IOException if writer is wrong
+     **/
     public static void writeToFile(String path, List<Course> courses) throws IOException {
         try{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -33,9 +37,14 @@ public class WriteToFile {
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
+    /**
+     * Write object array into json file for future used
+     * @throws IOException if writer is wrong
+     **/
     public static void writeToAJsonFile(String path, String context){
         try{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -47,6 +56,7 @@ public class WriteToFile {
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+            System.exit(1);
         }
     }
 }

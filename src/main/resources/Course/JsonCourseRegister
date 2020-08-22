@@ -45,7 +45,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "Phát triển ứng dụng Web",
     "courseCode": "INT3306 21",
     "scope": [
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": 4,
     "name": "Phân tích và thiết kế OOP",
     "courseCode": "INT3110 20",
     "scope": [
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": 5,
     "name": "Kiểm thử và đảm bảo chất lượng phần mềm",
     "courseCode": "INT3117 20",
     "scope": [
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": 6,
     "name": "Quản lý dự án phần mềm",
     "courseCode": "INT3111 20",
     "scope": [
@@ -103,7 +103,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": 7,
     "name": "Trí tuệ nhân tạo",
     "courseCode": "Đang xin mở lớp",
     "scope": [
@@ -116,7 +116,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": 8,
     "name": "Thể Chất",
     "courseCode": "Đang xin mở lớp",
     "scope": [
@@ -125,6 +125,82 @@
         "time": "Đang xin mở lớp",
         "weekday": "Đang xin mở lớp",
         "location": "Đang xin mở lớp"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Đồ họa máy tính",
+    "courseCode": "INT3403 20",
+    "scope": [
+      {
+        "scope": "N1",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 6",
+        "location": "PM313-G2"
+      },
+      {
+        "scope": "N1",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 6",
+        "location": "PM313-G2"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Xác suất thống kê (base)",
+    "courseCode": "INT3306 21",
+    "scope": [
+      {
+        "scope": "N1",
+        "time": "Tiết 9-10",
+        "weekday": "Thứ 3",
+        "location": "PM313-G2"
+      },
+      {
+        "scope": "N1",
+        "time": "Tiết 9-10",
+        "weekday": "Thứ 3",
+        "location": "PM313-G2"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Phát triển ứng dụng Web",
+    "courseCode": "INT3403 20",
+    "scope": [
+      {
+        "scope": "N1",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 6",
+        "location": "PM313-G2"
+      },
+      {
+        "scope": "N1",
+        "time": "Tiết 4-6 ",
+        "weekday": "Thứ 6",
+        "location": "PM313-G2"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Kiểm thử và đảm bảo chất lượng phần mềm",
+    "courseCode": "INT3306 21",
+    "scope": [
+      {
+        "scope": "N1",
+        "time": "Tiết 9-10",
+        "weekday": "Thứ 3",
+        "location": "PM313-G2"
+      },
+      {
+        "scope": "N1",
+        "time": "Tiết 9-10",
+        "weekday": "Thứ 3",
+        "location": "PM313-G2"
       }
     ]
   }

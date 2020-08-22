@@ -2,6 +2,11 @@ package Course;
 
 import java.util.ArrayList;
 
+/**
+ * Init Course entity to get all info from course
+ * And store course properties from sheets to course object
+ * Course scope are listed object because one course has many scopes
+ **/
 public class Course {
     private Integer id;
     private String name;
@@ -49,4 +54,6 @@ public class Course {
 
     public Course() {
     }
+
+
 }

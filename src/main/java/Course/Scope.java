@@ -1,5 +1,10 @@
 package Course;
 
+/**
+ * Init Scope entity to get all info from course's scope
+ * And store scope properties from sheets to course's scope object
+ * Course scope are listed object because one course has many scopes
+ **/
 public class Scope {
     private String scope;
     private String time;
