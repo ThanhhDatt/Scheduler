@@ -73,7 +73,7 @@ public class Scheduler {
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
      */
-    public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    public synchronized static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         // Load client secrets.
         InputStream in = Scheduler.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
@@ -121,7 +121,7 @@ public class Scheduler {
                 .get(SPREADSHEET_ID, range)
                 .execute();
         List<List<Object>> values = response.getValues();
-        Stack<Course> course1 = new Stack<Course>();
+        Stack<Course> coursesList = new Stack<Course>();
         int index = 0;
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
@@ -130,15 +130,14 @@ public class Scheduler {
                 Course course = new Course();
                 ArrayList<Scope> scopes = new ArrayList<>();
                 Scope scope = new Scope();
-                course.setId(course1.size());
+                course.setId(coursesList.size());
                 course.setName((String) row.get(1));
                 course.setCourseCode((String) row.get(2));
                 /**
                  * Ignored merged cells case that following cell return null
                  ********** HARD CODE *******
                  **/
-                if(((String) row.get(2)).equalsIgnoreCase(ROW_STATUS))
-                {
+                if(((String) row.get(2)).equalsIgnoreCase(ROW_STATUS)) {
                     scope.setScope((String) row.get(2));
                     scope.setTime((String) row.get(2));
                     scope.setWeekday((String) row.get(2));
@@ -150,20 +149,20 @@ public class Scheduler {
                     scope.setLocation((String) row.get(6));
                 }
                 scopes.add(scope);
-                if(values.get(index).get(1)==""){
-                    course.setId(course1.size()-1);
+                if(values.get(index).get(1)=="") {
+                    course.setId(coursesList.size()-1);
                     course.setName((String) values.get(index-1).get(1));
                     course.setCourseCode((String) values.get(index-1).get(2));
                     Scope scope1 = new Scope();
-                    scope1.setScope((String) row.get(3));
-                    scope1.setTime((String) row.get(4));
-                    scope1.setWeekday((String) row.get(5));
-                    scope1.setLocation((String) row.get(6));
+                    scope1.setScope((String) values.get(index - 1).get(3));
+                    scope1.setTime((String) values.get(index - 1).get(4));
+                    scope1.setWeekday((String) values.get(index - 1).get(5));
+                    scope1.setLocation((String) values.get(index - 1).get(6));
                     scopes.add(scope1);
-                    course1.pop();
+                    coursesList.pop();
                 }
                 course.setScope(scopes);
-                course1.add(course);
+                coursesList.add(course);
                 index++;
             }
         }
@@ -173,7 +172,7 @@ public class Scheduler {
 //          - Create schedule base on course info
 
         /**Show course info*/
-        for(Course course : course1){
+        for(Course course : coursesList){
             System.out.println("ID: " + course.getId());
             System.out.println("Name: " + course.getName());
             System.out.println("Code: " + course.getCourseCode());
@@ -188,7 +187,7 @@ public class Scheduler {
             System.out.println();
         }
         System.out.println("\n \n");
-        courses = course1;
+        courses = coursesList;
 
         /**
          * Write data to file (text file and json file) for future using

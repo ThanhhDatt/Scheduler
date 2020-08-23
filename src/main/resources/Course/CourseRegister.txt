@@ -1,4 +1,4 @@
-All courses updated at time: 2020/08/22 17:26:34
+All courses updated at time: 2020/08/23 16:37:13
  
 ID: 1
 Name: Xác suất thống kê (base)
@@ -30,10 +30,10 @@ Course Scope:
 		 + Weekday: Thứ 6
 		 + Location: PM313-G2
 	 Scope 2: 
-		 + Scope: N1
-		 + Time: Tiết 4-6 
-		 + Weekday: Thứ 6
-		 + Location: PM313-G2
+		 + Scope: CL
+		 + Time: Tiết 5-6
+		 + Weekday: Thứ 3
+		 + Location: 206-GĐ3
 
 ID: 4
 Name: Phát triển ứng dụng Web
@@ -45,10 +45,10 @@ Course Scope:
 		 + Weekday: Thứ 3
 		 + Location: PM313-G2
 	 Scope 2: 
-		 + Scope: N1
-		 + Time: Tiết 9-10
-		 + Weekday: Thứ 3
-		 + Location: PM313-G2
+		 + Scope: CL
+		 + Time: Tiết 3-4
+		 + Weekday: Thứ 5
+		 + Location: 210-GĐ3
 
 ID: 5
 Name: Phân tích và thiết kế OOP
@@ -99,64 +99,4 @@ Course Scope:
 		 + Time: Đang xin mở lớp
 		 + Weekday: Đang xin mở lớp
 		 + Location: Đang xin mở lớp
-
-ID: 10
-Name: Đồ họa máy tính
-Code: INT3403 20
-Course Scope: 
-	 Scope 1: 
-		 + Scope: N1
-		 + Time: Tiết 4-6 
-		 + Weekday: Thứ 6
-		 + Location: PM313-G2
-	 Scope 2: 
-		 + Scope: N1
-		 + Time: Tiết 4-6 
-		 + Weekday: Thứ 6
-		 + Location: PM313-G2
-
-ID: 11
-Name: Xác suất thống kê (base)
-Code: INT3306 21
-Course Scope: 
-	 Scope 1: 
-		 + Scope: N1
-		 + Time: Tiết 9-10
-		 + Weekday: Thứ 3
-		 + Location: PM313-G2
-	 Scope 2: 
-		 + Scope: N1
-		 + Time: Tiết 9-10
-		 + Weekday: Thứ 3
-		 + Location: PM313-G2
-
-ID: 12
-Name: Phát triển ứng dụng Web
-Code: INT3403 20
-Course Scope: 
-	 Scope 1: 
-		 + Scope: N1
-		 + Time: Tiết 4-6 
-		 + Weekday: Thứ 6
-		 + Location: PM313-G2
-	 Scope 2: 
-		 + Scope: N1
-		 + Time: Tiết 4-6 
-		 + Weekday: Thứ 6
-		 + Location: PM313-G2
-
-ID: 13
-Name: Kiểm thử và đảm bảo chất lượng phần mềm
-Code: INT3306 21
-Course Scope: 
-	 Scope 1: 
-		 + Scope: N1
-		 + Time: Tiết 9-10
-		 + Weekday: Thứ 3
-		 + Location: PM313-G2
-	 Scope 2: 
-		 + Scope: N1
-		 + Time: Tiết 9-10
-		 + Weekday: Thứ 3
-		 + Location: PM313-G2
 

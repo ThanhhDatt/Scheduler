@@ -37,10 +37,10 @@
         "location": "PM313-G2"
       },
       {
-        "scope": "N1",
-        "time": "Tiết 4-6 ",
-        "weekday": "Thứ 6",
-        "location": "PM313-G2"
+        "scope": "CL",
+        "time": "Tiết 5-6",
+        "weekday": "Thứ 3",
+        "location": "206-GĐ3"
       }
     ]
   },
@@ -56,10 +56,10 @@
         "location": "PM313-G2"
       },
       {
-        "scope": "N1",
-        "time": "Tiết 9-10",
-        "weekday": "Thứ 3",
-        "location": "PM313-G2"
+        "scope": "CL",
+        "time": "Tiết 3-4",
+        "weekday": "Thứ 5",
+        "location": "210-GĐ3"
       }
     ]
   },
@@ -125,82 +125,6 @@
         "time": "Đang xin mở lớp",
         "weekday": "Đang xin mở lớp",
         "location": "Đang xin mở lớp"
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Đồ họa máy tính",
-    "courseCode": "INT3403 20",
-    "scope": [
-      {
-        "scope": "N1",
-        "time": "Tiết 4-6 ",
-        "weekday": "Thứ 6",
-        "location": "PM313-G2"
-      },
-      {
-        "scope": "N1",
-        "time": "Tiết 4-6 ",
-        "weekday": "Thứ 6",
-        "location": "PM313-G2"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Xác suất thống kê (base)",
-    "courseCode": "INT3306 21",
-    "scope": [
-      {
-        "scope": "N1",
-        "time": "Tiết 9-10",
-        "weekday": "Thứ 3",
-        "location": "PM313-G2"
-      },
-      {
-        "scope": "N1",
-        "time": "Tiết 9-10",
-        "weekday": "Thứ 3",
-        "location": "PM313-G2"
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "name": "Phát triển ứng dụng Web",
-    "courseCode": "INT3403 20",
-    "scope": [
-      {
-        "scope": "N1",
-        "time": "Tiết 4-6 ",
-        "weekday": "Thứ 6",
-        "location": "PM313-G2"
-      },
-      {
-        "scope": "N1",
-        "time": "Tiết 4-6 ",
-        "weekday": "Thứ 6",
-        "location": "PM313-G2"
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "name": "Kiểm thử và đảm bảo chất lượng phần mềm",
-    "courseCode": "INT3306 21",
-    "scope": [
-      {
-        "scope": "N1",
-        "time": "Tiết 9-10",
-        "weekday": "Thứ 3",
-        "location": "PM313-G2"
-      },
-      {
-        "scope": "N1",
-        "time": "Tiết 9-10",
-        "weekday": "Thứ 3",
-        "location": "PM313-G2"
       }
     ]
   }
