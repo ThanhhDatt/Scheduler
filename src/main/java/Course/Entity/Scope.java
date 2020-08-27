@@ -53,4 +53,8 @@ public class Scope {
     public Scope() {
     }
 
+    @Override
+    public String toString() {
+        return "\n Weekday: " + getWeekday() + " Time: " + getTime() + " Location: " + getLocation();
+    }
 }

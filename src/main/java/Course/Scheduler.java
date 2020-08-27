@@ -192,9 +192,9 @@ public class Scheduler {
         /**
          * Write data to file (text file and json file) for future using
          * Divided into 2 thread for optimization
-         * @thread1 for writing to text file
-         * @thread2 for writing to json file
-         * @thread3 for writing course info into sheets
+         * @thread1 for writing courses list to text file
+         * @thread2 for writing courses list to json file
+         * @thread3 for writing courses info into sheets
          **/
         //thread 1
         Runnable r1 = new WriteToFile("src/main/resources/Course/CourseRegister.txt", courses);
@@ -204,6 +204,7 @@ public class Scheduler {
         String JsonData = ParseToJson.parse(courses);
         Runnable r2 = new WriteToJsonFile("src/main/resources/Course/JsonCourseRegister", JsonData);
         new Thread(r2).start();
+
 
         //thread 3
         Runnable r3 = new WriteToSheets(courses, SPREADSHEET_ID);

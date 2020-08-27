@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static Course.Scheduler.*;
@@ -138,9 +137,10 @@ public class WriteToSheets implements Runnable{
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(1, course.getName());
+                                    row.set(1, course.getName() + scope.toString());
                                     continue;
                                 }
                             }
@@ -148,41 +148,66 @@ public class WriteToSheets implements Runnable{
                         break;
                     case "Thứ 3":
                         for (List row : values) {
-                            if (scope.getTime().substring(0, 6).concat(" ").equals(row.get(0).toString().substring(0, 7))) {
-                                row.set(2, course.getName().concat( " ( " + scope.getTime() + ")"));
-                                continue;
+                            List times = Arrays.asList(scope.getTime().split("-"));
+                            times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
+                            for(Object time : times){
+                                if(time.toString().equals(row.get(0).toString().substring(0, 7))){
+                                    row.set(2, course.getName() + scope.toString());
+                                    continue;
+                                }
                             }
                         }
                         break;
                     case "Thứ 4":
                         for (List row : values) {
-                            if (scope.getTime().substring(0, 6).concat(" ").equals(row.get(0).toString().substring(0, 7))) {
-                                row.set(3, course.getName().concat( " ( " + scope.getTime() + ")"));
-                                continue;
+                            List times = Arrays.asList(scope.getTime().split("-"));
+                            times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
+                            for(Object time : times){
+                                if(time.toString().equals(row.get(0).toString().substring(0, 7))){
+                                    row.set(3, course.getName() + scope.toString());
+                                    continue;
+                                }
                             }
                         }
                         break;
                     case "Thứ 5":
                         for (List row : values) {
-                            if (scope.getTime().substring(0, 6).concat(" ").equals(row.get(0).toString().substring(0, 7))) {
-                                row.set(4, course.getName().concat( " ( " + scope.getTime() + ")"));
-                                continue;
+                            List times = Arrays.asList(scope.getTime().split("-"));
+                            times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
+                            for(Object time : times){
+                                if(time.toString().equals(row.get(0).toString().substring(0, 7))){
+                                    row.set(4, course.getName() + scope.toString());
+                                    continue;
+                                }
                             }
                         }
                         break;
                     case "Thứ 6":
                         for (List row : values) {
-                            if (scope.getTime().substring(0, 6).concat(" ").equals(row.get(0).toString().substring(0, 7))) {
-                                row.set(5, course.getName().concat( " ( " + scope.getTime() + ")"));
-                                continue;
+                            List times = Arrays.asList(scope.getTime().split("-"));
+                            times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
+                            for(Object time : times){
+                                if(time.toString().equals(row.get(0).toString().substring(0, 7))){
+                                    row.set(5, course.getName() + scope.toString());
+                                    continue;
+                                }
                             }
                         }
                         break;
                     case "Thứ 7":
                         for (List row : values) {
-                            if (scope.getTime().substring(0, 6).concat(" ").equals(row.get(0).toString().substring(0, 7))) {
-                                row.set(6, course.getName().concat( " ( " + scope.getTime() + ")"));
-                                continue;
+                            List times = Arrays.asList(scope.getTime().split("-"));
+                            times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            for(int it=0; it<times.size(); it++) if(times.get(0).toString().length()<7) times.set(0, times.get(0).toString().concat(" "));
+                            for(Object time : times){
+                                if(time.toString().equals(row.get(0).toString().substring(0, 7))){
+                                    row.set(6, course.getName() + scope.toString());
+                                    continue;
+                                }
                             }
                         }
                         break;
