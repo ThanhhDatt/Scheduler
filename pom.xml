@@ -61,7 +61,7 @@
                     <executable>maven</executable>
                     <!-- optional -->
                     <mainClass>Course.Scheduler</mainClass>
-                    <workingDirectory>/tmp</workingDirectory>
+<!--                    <workingDirectory>/tmp</workingDirectory>-->
                     <environmentVariables>
                         <LANG>en_US</LANG>
                     </environmentVariables>

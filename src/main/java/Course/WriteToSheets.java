@@ -7,14 +7,13 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
-import com.google.api.services.sheets.v4.model.AppendValuesResponse;
-import com.google.api.services.sheets.v4.model.ClearValuesRequest;
-import com.google.api.services.sheets.v4.model.ValueRange;
+import com.google.api.services.sheets.v4.model.*;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static Course.Scheduler.*;
@@ -55,7 +54,7 @@ public class WriteToSheets implements Runnable{
     @Override
     public void run() {
         try{
-            range = "!A31:Z500";
+            range = "!A21:Z500";
             Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                     .setApplicationName(APPLICATION_NAME)
                     .build();
@@ -95,7 +94,6 @@ public class WriteToSheets implements Runnable{
             e.printStackTrace();
             System.exit(1);
         }
-
     }
 
     /**
@@ -136,12 +134,16 @@ public class WriteToSheets implements Runnable{
                     case "Thứ 2":
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
+                            int start = Integer.parseInt(times.get(0).toString().substring(5));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            int end = Integer.parseInt(times.get(1).toString().replace("Tiết ", "").replace(" ", ""));
                             for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(1, course.getName() + scope.toString());
-                                    continue;
+                                    for(int i=start; i<=end; i++){
+                                        values.get(i).set(1, course.getName() + scope.toString());
+                                        continue;
+                                    }
                                 }
                             }
                         }
@@ -149,12 +151,16 @@ public class WriteToSheets implements Runnable{
                     case "Thứ 3":
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
+                            int start = Integer.parseInt(times.get(0).toString().substring(5));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            int end = Integer.parseInt(times.get(1).toString().replace("Tiết ", "").replace(" ", ""));
                             for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(2, course.getName() + scope.toString());
-                                    continue;
+                                    for(int i=start; i<=end; i++){
+                                        values.get(i).set(2, course.getName() + scope.toString());
+                                        continue;
+                                    }
                                 }
                             }
                         }
@@ -162,12 +168,16 @@ public class WriteToSheets implements Runnable{
                     case "Thứ 4":
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
+                            int start = Integer.parseInt(times.get(0).toString().substring(5));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            int end = Integer.parseInt(times.get(1).toString().replace("Tiết ", "").replace(" ", ""));
                             for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(3, course.getName() + scope.toString());
-                                    continue;
+                                    for(int i=start; i<=end; i++){
+                                        values.get(i).set(3, course.getName() + scope.toString());
+                                        continue;
+                                    }
                                 }
                             }
                         }
@@ -175,12 +185,16 @@ public class WriteToSheets implements Runnable{
                     case "Thứ 5":
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
+                            int start = Integer.parseInt(times.get(0).toString().substring(5));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            int end = Integer.parseInt(times.get(1).toString().replace("Tiết ", "").replace(" ", ""));
                             for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(4, course.getName() + scope.toString());
-                                    continue;
+                                    for(int i=start; i<=end; i++){
+                                        values.get(i).set(4, course.getName() + scope.toString());
+                                        continue;
+                                    }
                                 }
                             }
                         }
@@ -188,12 +202,16 @@ public class WriteToSheets implements Runnable{
                     case "Thứ 6":
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
+                            int start = Integer.parseInt(times.get(0).toString().substring(5));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
+                            int end = Integer.parseInt(times.get(1).toString().replace("Tiết ", "").replace(" ", ""));
                             for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(5, course.getName() + scope.toString());
-                                    continue;
+                                    for(int i=start; i<=end; i++){
+                                        values.get(i).set(5, course.getName() + scope.toString());
+                                        continue;
+                                    }
                                 }
                             }
                         }
@@ -201,12 +219,16 @@ public class WriteToSheets implements Runnable{
                     case "Thứ 7":
                         for (List row : values) {
                             List times = Arrays.asList(scope.getTime().split("-"));
+                            int start = Integer.parseInt(times.get(0).toString().substring(5));
                             times.set(1, "Tiết ".concat(times.get(1).toString()));
-                            for(int it=0; it<times.size(); it++) if(times.get(0).toString().length()<7) times.set(0, times.get(0).toString().concat(" "));
+                            int end = Integer.parseInt(times.get(1).toString().replace("Tiết ", "").replace(" ", ""));
+                            for(int it=0; it<times.size(); it++) if(times.get(it).toString().length()<7) times.set(it, times.get(it).toString().concat(" "));
                             for(Object time : times){
                                 if(time.toString().equals(row.get(0).toString().substring(0, 7))){
-                                    row.set(6, course.getName() + scope.toString());
-                                    continue;
+                                    for(int i=start; i<=end; i++){
+                                        values.get(i).set(6, course.getName() + scope.toString());
+                                        continue;
+                                    }
                                 }
                             }
                         }
@@ -221,5 +243,4 @@ public class WriteToSheets implements Runnable{
 
         return values;
     }
-
 }

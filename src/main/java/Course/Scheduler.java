@@ -133,11 +133,12 @@ public class Scheduler {
                 course.setId(coursesList.size());
                 course.setName((String) row.get(1));
                 course.setCourseCode((String) row.get(2));
+
                 /**
                  * Ignored merged cells case that following cell return null
-                 ********** HARD CODE *******
+                 ********** HARD CODE **********
                  **/
-                if(((String) row.get(2)).equalsIgnoreCase(ROW_STATUS)) {
+                if((row.get(2)).equals(ROW_STATUS)) {
                     scope.setScope((String) row.get(2));
                     scope.setTime((String) row.get(2));
                     scope.setWeekday((String) row.get(2));
@@ -168,7 +169,6 @@ public class Scheduler {
         }
 
 //        TODO:
-//          - Add course info into table
 //          - Create schedule base on course info
 
         /**Show course info*/
